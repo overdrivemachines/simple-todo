@@ -1,4 +1,4 @@
-#SIMPLE TODO APP
+# SIMPLE TODO APP
 Example Rails 6 App inspired by https://dribbble.com/shots/13998970-Simple-Task-App
 
 ## Model
