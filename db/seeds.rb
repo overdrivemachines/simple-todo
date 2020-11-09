@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+u = User.first
+t1 = u.tasks.create(
+	title: "Start learning Swift",
+	deadline_at: Date.today,
+	priority: 1,
+	completed: false)
