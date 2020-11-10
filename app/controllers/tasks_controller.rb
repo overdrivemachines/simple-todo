@@ -4,16 +4,13 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
-  end
-
-  # GET /tasks/1
-  def show
+    # show only tasks belonging to the logged in user
+    @tasks = current_user.tasks
   end
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = current_user.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -22,10 +19,10 @@ class TasksController < ApplicationController
 
   # POST /tasks
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      redirect_to tasks_url, notice: 'Task was successfully created.'
     else
       render :new
     end
@@ -34,7 +31,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      redirect_to tasks_url, notice: 'Task was successfully updated.'
     else
       render :edit
     end
@@ -49,11 +46,12 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      # Scoping. Make sure the task belongs to the logged in user.
+      @task = current_user.tasks.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:title, :deadline_at, :priority, :completed, :user_id)
+      params.require(:task).permit(:title, :deadline_at, :priority, :user_id)
     end
 end
