@@ -13,4 +13,18 @@
 #
 class Task < ApplicationRecord
   belongs_to :user
+
+  # Converts int values of priorty into appropriate strings
+  def priority_string
+    case priority
+    when 0
+      "high"
+    when 1
+      "medium"
+    when 2
+      "low"
+    else
+      "invalid"
+    end
+  end
 end
