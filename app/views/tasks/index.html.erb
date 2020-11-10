@@ -1,35 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h4 class="d-flex justify-content-between mb-4">
+  <span>Tasks</span>
+  <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>
+</h4>
 
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Deadline at</th>
-      <th>Priority</th>
-      <th>Completed</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.deadline_at %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.completed %></td>
-        <td><%= task.user_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_task_path %>
+<ul class="list-group">
+  <% @tasks.each do |task| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= task.title %>
+      <div>
+        <span class="badge badge-primary badge-pill"><%= task.priority_string %></span>
+        <span class="badge badge-primary badge-pill"><%= task.completed ? "Completed" : "Not Complete" %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>
