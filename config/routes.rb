@@ -5,8 +5,7 @@
 #                                       POST   /tasks(.:format)                                                                         tasks#create
 #                              new_task GET    /tasks/new(.:format)                                                                     tasks#new
 #                             edit_task GET    /tasks/:id/edit(.:format)                                                                tasks#edit
-#                                  task GET    /tasks/:id(.:format)                                                                     tasks#show
-#                                       PATCH  /tasks/:id(.:format)                                                                     tasks#update
+#                                  task PATCH  /tasks/:id(.:format)                                                                     tasks#update
 #                                       PUT    /tasks/:id(.:format)                                                                     tasks#update
 #                                       DELETE /tasks/:id(.:format)                                                                     tasks#destroy
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
@@ -47,7 +46,7 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks, except: :show
   devise_for :users
   root to: "home#index"
 end
