@@ -16,3 +16,12 @@ What is the app going to look like?
 - Graphviz (only for Development Environment)
 
 ## TODO
+
+Styles 
+ - https://codepen.io/knyttneve/pen/mddGVjB
+ - https://codepen.io/AllThingsSmitty/pen/WjZVjo
+ - https://dribbble.com/shots/8215303/attachments/589665?mode=media
+ - https://techsparx.com/nodejs/examples/todo-bootstrap/running.html
+
+Video Guide
+ - 29:32 - rails g scaffold Element element_type:string content:text post:references position:integer --skip-template-engine
