@@ -12,6 +12,9 @@
         <span class="badge badge-primary badge-pill"><%= task.completed ? "Completed" : "Not Complete" %></span>
       </div>
     </li>
+    <li class="list-group-item">
+      <%= render 'form', task: task %>
+    </li>
   <% end %>
   <li class="list-group-item">
     <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>

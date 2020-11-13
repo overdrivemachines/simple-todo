@@ -6,6 +6,8 @@ class TasksController < ApplicationController
   def index
     # show only tasks belonging to the logged in user
     @tasks = current_user.tasks
+    # new task will be created from index page only
+    @task = current_user.tasks.build
   end
 
   # GET /tasks/new
